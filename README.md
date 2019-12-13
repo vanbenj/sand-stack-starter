@@ -32,7 +32,7 @@ docker-compose run api npm run seedDb
 ```
 
 You should now be able to access the Neo4j database browser at [localhost:7474](http://localhost:7474) (you can log in using neo4j/letmein)
-![](img/graphql-browser.jpg)
+![](img/neo4j-browser.jpg)
 
 
 You should also be able to access the Apollo GraphQL browser at [localhost:4001/graphql](http://localhost:4001/graphql)
