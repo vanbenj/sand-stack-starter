@@ -27,7 +27,7 @@
 
 </script>
 
-<h1>Users xxxxx</h1>
+<h1>Users</h1>
 
 {#await $users}
 <p>Loading...</p>
