@@ -1,7 +1,7 @@
 {
-  "name": "sang-stack-starter-api",
+  "name": "sand-stack-starter-api",
   "version": "0.0.1",
-  "description": "API app for SANGstack",
+  "description": "API app for SANDstack",
   "main": "src/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -25,13 +25,14 @@
     "node-fetch": "^2.6.0"
   },
   "devDependencies": {
-    "@babel/core": "^7.6.3",
     "@babel/cli": "^7.6.3",
+    "@babel/core": "^7.6.3",
     "@babel/node": "^7.6.3",
     "@babel/preset-env": "^7.6.3",
     "husky": "^1.3.1",
     "lint-staged": "^8.2.1",
-    "nodemon": "^1.19.1"
+    "nodemon": "^1.19.1",
+    "prettier": "^1.19.1"
   },
   "babel": {
     "presets": [
