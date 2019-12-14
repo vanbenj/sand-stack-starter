@@ -14,9 +14,6 @@
 
   export async function preload({ params }) {
     return {
-      cache: await client.query({
-        query: GET_BUSINESSES
-      }),
       category: params.name
     };
   }
