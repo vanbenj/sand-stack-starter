@@ -6,6 +6,8 @@ This project used as a starting point the api component from the [GRANDstack](ht
 
 If you are new to Svelete this is a good [introductory video](https://youtu.be/AdNJ3fydeao)
 
+The GRANDStack documentation provides a good overview of the [Neo4j GraphQL](https://grandstack.io/docs/neo4j-graphql-overview.html) integration.
+
 >This is my first nodejs project so I expect some clean up is needed in the package.json configurations.
 >Any feedback would be appreciated
 
