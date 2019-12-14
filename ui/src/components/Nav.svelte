@@ -16,7 +16,7 @@
 
   /* clearfix */
   ul::after {
-    content: "";
+    content: '';
     display: block;
     clear: both;
   }
@@ -33,7 +33,7 @@
 
   .selected::after {
     position: absolute;
-    content: "";
+    content: '';
     width: calc(100% - 1em);
     height: 2px;
     background-color: rgb(255, 62, 0);
@@ -51,18 +51,19 @@
 <nav>
   <ul>
     <li>
-      <a class='{segment === undefined ? "selected" : ""}' href=".">home</a>
+      <a class={segment === undefined ? 'selected' : ''} href=".">home</a>
     </li>
-		<li><a class:selected='{segment === "about"}' href='about'>about</a></li>
+    <li>
+      <a class:selected={segment === 'about'} href="about">about</a>
+    </li>
 
     <!-- for the users link, we're using rel=prefetch so that Sapper prefetches
 		     the users data when we hover over the link or tap it on a touchscreen -->
     <li>
       <a
         rel="prefetch"
-        class='{segment === "users" ? "selected" : ""}'
-        href="users"
-      >
+        class={segment === 'users' ? 'selected' : ''}
+        href="users">
         users
       </a>
     </li>
@@ -72,9 +73,8 @@
     <li>
       <a
         rel="prefetch"
-        class='{segment === "categories" ? "selected" : ""}'
-        href="categories"
-      >
+        class={segment === 'categories' ? 'selected' : ''}
+        href="categories">
         categories
       </a>
     </li>

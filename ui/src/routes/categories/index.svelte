@@ -1,11 +1,11 @@
 <script context="module">
   // Here we import the graphql client
-  import client from "../../apollo.js";
-  import { gql } from "apollo-boost";
+  import client from '../../apollo.js';
+  import { gql } from 'apollo-boost';
 
   const GET_CATEGORIES = gql`
     query getCategories {
-      Category(orderBy:name_asc) {
+      Category(orderBy: name_asc) {
         name
       }
     }
@@ -21,10 +21,9 @@
 </script>
 
 <script>
-  import { query } from "svelte-apollo";
+  import { query } from 'svelte-apollo';
 
   const categories = query(client, { query: GET_CATEGORIES });
-
 </script>
 
 <style>
@@ -41,19 +40,17 @@
 <h1>Categories</h1>
 
 {#await $categories}
-<p>Loading...</p>
+  <p>Loading...</p>
 {:then result}
 
-<ul>
-  {#each result.data.Category as { name } }
-  <li>
-    <a rel="prefetch" href="categories/{name}">
-      {name}
-    </a>
-  </li>
-  {/each}
-</ul>
+  <ul>
+    {#each result.data.Category as { name }}
+      <li>
+        <a rel="prefetch" href="categories/{name}">{name}</a>
+      </li>
+    {/each}
+  </ul>
 
 {:catch error}
-<p>Error: {error}</p>
+  <p>Error: {error}</p>
 {/await}
