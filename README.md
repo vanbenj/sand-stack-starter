@@ -2,7 +2,7 @@
 
 This project is a starter for building a SANDstack ([Sveltejs](https://svelte.dev/)/[Sapper](https://sapper.svelte.dev/), [Apollo GraphQL](https://www.apollographql.com/), [Neo4j Database](https://neo4j.com/neo4j-graph-database/)) application. There are two components to the starter, the UI application (a Svelte/Sapper app) and the API app (GraphQL server).
 
-This project used as a starting point the api component from the [GRANDstack](https://grandstack.io) project and the ui component from [rococosans sapper-svelte-apollo-demo](https://github.com/rococosans/sapper-svelte-apollo-demo) project.
+This project used as a starting point the api component from the [GRANDstack](https://grandstack.io) project and the ui component from [rococosans sapper-svelte-apollo-demo](https://github.com/rococosans/sapper-svelte-apollo-demo) project (which is basically just the default [Sapper template](https://github.com/sveltejs/sapper-template) with the [Svelte Apollo Integration](https://github.com/timhall/svelte-apollo) added in).
 
 If you are new to Svelete this is a good [introductory video](https://youtu.be/AdNJ3fydeao)
 
@@ -107,3 +107,12 @@ cd ../ui
 npm run dev
 ```
 This will start the Svelte Sapper app in the foreground in dev mode. In dev mode when a file change is saved in the `ui` directory the web page should automatically reload with the changes.
+
+### Prettier code
+You run this command in either the `ui` or `api` directory to format the code.
+
+```
+./node_modules/.bin/prettier --single-quote --write "src/**/*.{js,jsx,json,css}"
+```
+
+> TODO: automate this as part of the build

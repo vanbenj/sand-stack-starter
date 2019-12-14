@@ -1,8 +1,8 @@
 {
 	"background_color": "#ffffff",
 	"theme_color": "#333333",
-	"name": "TODO",
-	"short_name": "TODO",
+	"name": "SANDStack Starter Template",
+	"short_name": "sand-stack",
 	"display": "minimal-ui",
 	"start_url": "/",
 	"icons": [
