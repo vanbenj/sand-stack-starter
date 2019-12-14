@@ -1,46 +1,46 @@
-<script context="module">
-  // Here we import the graphql client
-  import client from "../apollo.js";
-  import { gql } from "apollo-boost";
+<style>
+	h1, figure, p {
+		text-align: center;
+		margin: 0 auto;
+	}
 
-  const GET_USERS = gql`
-    query getUsers {
-      usersxx {
-        name
-      }
-    }
-  `;
+	h1 {
+		font-size: 2.8em;
+		text-transform: uppercase;
+		font-weight: 700;
+		margin: 0 0 0.5em 0;
+	}
 
-  export async function preload() {
-    return {
-      cache: await client.query({
-        query: GET_USERS
-      })
-    };
-  }
-</script>
+	figure {
+		margin: 0 0 1em 0;
+	}
 
-<script>
-  import { query } from "svelte-apollo";
+	img {
+		width: 100%;
+		max-width: 400px;
+		margin: 0 0 1em 0;
+	}
 
-  const users = query(client, { query: GET_USERS });
+	p {
+		margin: 1em auto;
+	}
 
-</script>
+	@media (min-width: 480px) {
+		h1 {
+			font-size: 4em;
+		}
+	}
+</style>
 
-<h1>Users</h1>
+<svelte:head>
+	<title>SANDstack project template</title>
+</svelte:head>
 
-{#await $users}
-<p>Loading...</p>
-{:then result}
+<h1>Great success!</h1>
 
-<ul>
-  {#each result.data.usersxx as { name } }
-  <li>
-    {name}
-  </li>
-  {/each}
-</ul>
+<figure>
+	<img alt='Borat' src='great-success.png'>
+	<figcaption>HIGH FIVE!</figcaption>
+</figure>
 
-{:catch error}
-<p>Error: {error}</p>
-{/await}
+<p><strong>Try editing this file (src/routes/index.svelte) to test live reloading.</strong></p>

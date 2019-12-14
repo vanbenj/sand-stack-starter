@@ -5,7 +5,7 @@ type User {
   reviews: [Review] @relation(name: "WROTE", direction: "OUT")
   avgStars: Float
     @cypher(
-      statement: "MATCH (this)-[:WROTE]->(r:Review) RETURN toFloat(avg(r.stars))"
+      statement: "MATCH (this)-[:WROTE] RETURN toFloat(avg(r.stars))"
     )
   numReviews: Int
     @cypher(statement: "MATCH (this)-[:WROTE]->(r:Review) RETURN COUNT(r)")
@@ -39,6 +39,5 @@ type Category {
 
 type Query {
   usersBySubstring(substring: String): [User] @cypher(statement: "MATCH (u:User) WHERE u.name CONTAINS $substring RETURN u")
-  usersxx: [User]
   hello: String
 }

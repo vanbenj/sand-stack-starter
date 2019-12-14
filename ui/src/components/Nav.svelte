@@ -53,16 +53,29 @@
     <li>
       <a class='{segment === undefined ? "selected" : ""}' href=".">home</a>
     </li>
+		<li><a class:selected='{segment === "about"}' href='about'>about</a></li>
 
-    <!-- for the albums link, we're using rel=prefetch so that Sapper prefetches
-		     the albums data when we hover over the link or tap it on a touchscreen -->
+    <!-- for the users link, we're using rel=prefetch so that Sapper prefetches
+		     the users data when we hover over the link or tap it on a touchscreen -->
     <li>
       <a
         rel="prefetch"
-        class='{segment === "albums" ? "selected" : ""}'
-        href="albums"
+        class='{segment === "users" ? "selected" : ""}'
+        href="users"
       >
-        albums
+        users
+      </a>
+    </li>
+
+    <!-- for the categories link, we're using rel=prefetch so that Sapper prefetches
+		     the categories data when we hover over the link or tap it on a touchscreen -->
+    <li>
+      <a
+        rel="prefetch"
+        class='{segment === "categories" ? "selected" : ""}'
+        href="categories"
+      >
+        categories
       </a>
     </li>
   </ul>
