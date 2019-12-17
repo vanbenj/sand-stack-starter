@@ -33,6 +33,7 @@
 </script>
 
 <script>
+  import StarRating from '../components/StarRating.svelte';
   import { query } from 'svelte-apollo';
 
   const users = query(client, { query: GET_USERS });
@@ -50,7 +51,7 @@
         {name}
         <ul>
           {#each reviews as { date, stars, business }}
-            <li>{stars} {date.formatted} {business.name}</li>
+            <li><StarRating rating={stars}/> {date.formatted} {business.name}</li>
           {/each}
         </ul>
       </li>

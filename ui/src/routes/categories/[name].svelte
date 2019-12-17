@@ -5,9 +5,10 @@
 
   const GET_BUSINESSES = gql`
     query getBusinesses($filter: _BusinessFilter) {
-      Business(filter: $filter, orderBy: name_asc) {
+      Business(filter: $filter, orderBy: avgStars_desc) {
         name
         address
+        avgStars
       }
     }
   `;
@@ -20,6 +21,7 @@
 </script>
 
 <script>
+  import StarRating from '../../components/StarRating.svelte';
   import { query } from 'svelte-apollo';
 
   export let category;
@@ -58,8 +60,8 @@
 {:then result}
 
   <ul>
-    {#each result.data.Business as { name, address }}
-      <li>{name} {address}</li>
+    {#each result.data.Business as { name, address, avgStars}}
+      <li><StarRating rating={avgStars}/> <b>{name}</b> {address}</li>
     {/each}
   </ul>
 
