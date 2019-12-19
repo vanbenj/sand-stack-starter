@@ -1,5 +1,5 @@
 {
-    "name": "grand-stack-starter",
+    "name": "sand-stack-starter",
     "env": {
         "NEO4J_URI": {
             "description": "The bolt endpoint for your neo4j database. For example: bolt://grandstack.io:7687",
