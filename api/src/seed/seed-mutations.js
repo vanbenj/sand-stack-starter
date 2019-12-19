@@ -263,7 +263,7 @@ export default /* GraphQL */ `
     r2: CreateReview(
       id: "r2"
       stars: 5
-      text: ""
+      text: "I love everything"
       date: { formatted: "2016-07-14" }
     ) {
       id
@@ -282,7 +282,7 @@ export default /* GraphQL */ `
     r3: CreateReview(
       id: "r3"
       stars: 3
-      text: ""
+      text: "It's lacking something"
       date: { formatted: "2018-09-10" }
     ) {
       id
@@ -301,7 +301,7 @@ export default /* GraphQL */ `
     r4: CreateReview(
       id: "r4"
       stars: 5
-      text: ""
+      text: "Love it more"
       date: { formatted: "2017-11-13" }
     ) {
       id
@@ -339,7 +339,7 @@ export default /* GraphQL */ `
     r6: CreateReview(
       id: "r6"
       stars: 4
-      text: ""
+      text: "Uses mostly organic food, vegan friendly"
       date: { formatted: "2018-03-24" }
     ) {
       id
@@ -358,7 +358,7 @@ export default /* GraphQL */ `
     r7: CreateReview(
       id: "r7"
       stars: 3
-      text: "Not a great selection of books, but fortunately the inter-library loan system is good. Wifi is quite slow. Not many comfortable places to site and read. Looking forward to the new building across the street in 2020!"
+      text: "Not a great selection of books, but fortunately the inter-library loan system is good. Wifi is quite slow."
       date: { formatted: "2015-08-29" }
     ) {
       id
@@ -377,7 +377,7 @@ export default /* GraphQL */ `
     r8: CreateReview(
       id: "r8"
       stars: 5
-      text: ""
+      text: "Zebra pale ale is nice"
       date: { formatted: "2018-08-11" }
     ) {
       id
@@ -396,7 +396,7 @@ export default /* GraphQL */ `
     r9: CreateReview(
       id: "r9"
       stars: 5
-      text: ""
+      text: "Love it!!"
       date: { formatted: "2016-11-21" }
     ) {
       id
@@ -414,8 +414,8 @@ export default /* GraphQL */ `
 
     r10: CreateReview(
       id: "r10"
-      stars: 4
-      text: ""
+      stars: 2
+      text: "Somewhat lacking in imagination"
       date: { formatted: "2015-12-15" }
     ) {
       id

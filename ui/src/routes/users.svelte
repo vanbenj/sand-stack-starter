@@ -7,17 +7,15 @@
     query getUsers {
       User {
         name
-        id
         reviews(orderBy: stars_desc) {
-          id
           date {
             formatted
           }
           stars
           business {
-            id
             name
           }
+          text
         }
       }
     }
@@ -42,6 +40,17 @@
   const users = query(client, { query: GET_USERS });
 </script>
 
+<style>
+  ul {
+    margin: 0 0 1em 0;
+    line-height: 1.5;
+  }
+</style>
+
+<svelte:head>
+  <title>users</title>
+</svelte:head>
+
 <h1>Users</h1>
 
 {#await $users}
@@ -53,10 +62,13 @@
       <li>
         {name}
         <ul>
-          {#each reviews as { date, stars, business }}
+          {#each reviews as { date, stars, business, text }}
             <li>
               <StarRating rating={stars} />
-              {date.formatted} {business.name}
+              {date.formatted}
+              <b>{business.name}</b>
+              <br />
+              <i>{text}</i>
             </li>
           {/each}
         </ul>
