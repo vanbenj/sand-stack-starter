@@ -1,4 +1,4 @@
-import { timestamp, files, shell, routes } from '@sapper/service-worker';
+import { timestamp, files, shell, routes } from "@sapper/service-worker";
 
 const ASSETS = `cache${timestamp}`;
 
@@ -7,7 +7,7 @@ const ASSETS = `cache${timestamp}`;
 const to_cache = shell.concat(files);
 const cached = new Set(to_cache);
 
-self.addEventListener('install', event => {
+self.addEventListener("install", event => {
   event.waitUntil(
     caches
       .open(ASSETS)
@@ -18,7 +18,7 @@ self.addEventListener('install', event => {
   );
 });
 
-self.addEventListener('activate', event => {
+self.addEventListener("activate", event => {
   event.waitUntil(
     caches.keys().then(async keys => {
       // delete old caches
@@ -31,14 +31,14 @@ self.addEventListener('activate', event => {
   );
 });
 
-self.addEventListener('fetch', event => {
-  if (event.request.method !== 'GET' || event.request.headers.has('range'))
+self.addEventListener("fetch", event => {
+  if (event.request.method !== "GET" || event.request.headers.has("range"))
     return;
 
   const url = new URL(event.request.url);
 
   // don't try to handle e.g. data: URIs
-  if (!url.protocol.startsWith('http')) return;
+  if (!url.protocol.startsWith("http")) return;
 
   // ignore dev server requests
   if (
@@ -63,7 +63,7 @@ self.addEventListener('fetch', event => {
 	}
 	*/
 
-  if (event.request.cache === 'only-if-cached') return;
+  if (event.request.cache === "only-if-cached") return;
 
   // for everything else, try the network first, falling back to
   // cache if the user is offline. (If the pages never change, you

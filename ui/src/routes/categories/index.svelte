@@ -1,7 +1,7 @@
 <script context="module">
   // Here we import the graphql client
-  import client from '../../apollo.js';
-  import { gql } from 'apollo-boost';
+  import client from "../../apollo.js";
+  import { gql } from "apollo-boost";
 
   const GET_CATEGORIES = gql`
     query getCategories {
@@ -21,7 +21,7 @@
 </script>
 
 <script>
-  import { setClient, restore, query } from 'svelte-apollo';
+  import { setClient, restore, query } from "svelte-apollo";
 
   export let cache;
   restore(client, GET_CATEGORIES, cache.data);

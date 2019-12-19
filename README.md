@@ -114,7 +114,7 @@ This will start the Svelte Sapper app in the foreground in dev mode. In dev mode
 You run this command in either the `ui` or `api` directory to format the code.
 
 ```
-./node_modules/.bin/prettier --single-quote --write "src/**/*.{js,jsx,json,css,svelte}"
+./node_modules/.bin/prettier --write "src/**/*.{js,jsx,json,css,svelte}"
 ```
 
 > TODO: automate this as part of the build

@@ -1,6 +1,6 @@
 <script>
   export let rating;
-  $: ratingPercent = Math.round(((rating / 5) * 100) / 5) * 5 + '%';
+  $: ratingPercent = Math.round(((rating / 5) * 100) / 5) * 5 + "%";
 </script>
 
 <style>
