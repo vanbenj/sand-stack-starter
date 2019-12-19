@@ -48,13 +48,20 @@
     margin: 0 0 1em 0;
     line-height: 1.5;
   }
+  a {
+    text-decoration: none !important;
+    color: grey;
+  }
 </style>
 
 <svelte:head>
   <title>{category}</title>
 </svelte:head>
 
-<h1>{category}</h1>
+<h1>
+  <a rel="prefetch" href="../categories">Categories</a>
+  > {category}
+</h1>
 
 {#await $businesses}
   <p>Loading...</p>

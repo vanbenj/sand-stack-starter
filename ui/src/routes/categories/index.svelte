@@ -24,7 +24,6 @@
   import { setClient, restore, query } from 'svelte-apollo';
 
   export let cache;
-  console.log(cache);
   restore(client, GET_CATEGORIES, cache.data);
   setClient(client);
   const categories = query(client, { query: GET_CATEGORIES });
