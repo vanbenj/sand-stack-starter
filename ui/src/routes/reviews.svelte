@@ -48,10 +48,10 @@
 </style>
 
 <svelte:head>
-  <title>users</title>
+  <title>reviews</title>
 </svelte:head>
 
-<h1>Users</h1>
+<h1>Reviews</h1>
 
 {#await $users}
   <p>Loading...</p>

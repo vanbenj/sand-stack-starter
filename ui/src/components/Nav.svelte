@@ -62,9 +62,9 @@
     <li>
       <a
         rel="prefetch"
-        class={segment === 'users' ? 'selected' : ''}
-        href="users">
-        users
+        class={segment === 'reviews' ? 'selected' : ''}
+        href="reviews">
+        reviews
       </a>
     </li>
 
