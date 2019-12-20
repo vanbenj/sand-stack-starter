@@ -22,7 +22,6 @@ export default {
 			replace({
 				'process.browser': true,
 				'process.env.NODE_ENV': JSON.stringify(mode),
-				'process.env.GRAPHQL_URI': "http://192.168.0.16:4001/graphql"
 			}),
 			svelte({
 				dev,
