@@ -1,13 +1,14 @@
-import ApolloClient from "apollo-boost";
 import fetch from "node-fetch";
-//import dotenv from 'dotenv';
+import { ApolloClient } from 'apollo-boost';
+import { InMemoryCache } from 'apollo-cache-inmemory';
+import { HttpLink } from 'apollo-link-http';
 
-// TODO get this working to use an environment variable
-// set environment variables from ../.env
-// dotenv.config({path: '/ui/.env', debug:true});
-//
-//const GRAPHQL_URI = process.env.GRAPHQL_URI || 'http://localhost:4001/graphql';
+const cache = new InMemoryCache();
+const link = new HttpLink({
+  uri: 'http://localhost:4001/graphql', fetch
+});
 
-const GRAPHQL_URI = "http://localhost:4001/graphql";
-
-export default new ApolloClient({ uri: GRAPHQL_URI, fetch });
+export default new ApolloClient({
+  cache,
+  link
+});
