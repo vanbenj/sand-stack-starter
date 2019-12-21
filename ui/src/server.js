@@ -16,14 +16,6 @@ const dev = NODE_ENV === "development";
 // assign server variable
 const server = polka();
 
-// ⚠️ hack to make the proxy work with polka
-// express-http-proxy is expecting these methods
-server.use(function(req, res, next) {
-  res.status = code => (res.statusCode = code);
-  res.set = res.setHeader.bind(res);
-  next();
-});
-
 // proxy to api
 server.use("/graphql", apiProxy);
 
