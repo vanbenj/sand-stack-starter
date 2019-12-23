@@ -1,32 +1,21 @@
 <script context="module">
-  // Here we import the graphql client
-  import client from "../../apollo.js";
-  import { gql } from "apollo-boost";
+	export async function preload({ params, query }) {
+    console.log("retrieving");
+		const res = await this.fetch(`categories.json`);
+    console.log("retrieved");
 
-  const GET_CATEGORIES = gql`
-    query getCategories {
-      Category(orderBy: name_asc) {
-        name
-      }
-    }
-  `;
+		if (res.status === 200) {
+      const categories = await res.json();
+      console.log(categories);
+			return { categories };
+		}
 
-  export async function preload() {
-    return {
-      cache: await client.query({
-        query: GET_CATEGORIES
-      })
-    };
-  }
+		this.error(500, 'Could not load users');
+	}
 </script>
 
 <script>
-  import { setClient, restore, query } from "svelte-apollo";
-
-  export let cache;
-  restore(client, GET_CATEGORIES, cache.data);
-  setClient(client);
-  const categories = query(client, { query: GET_CATEGORIES });
+	export let categories;
 </script>
 
 <style>

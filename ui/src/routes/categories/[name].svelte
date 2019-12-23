@@ -1,46 +1,22 @@
 <script context="module">
-  // Here we import the graphql client
-  import client from "../../apollo.js";
-  import { gql } from "apollo-boost";
+	export async function preload({ params, query }) {
+    let category = req.params.name;
 
-  const GET_BUSINESSES = gql`
-    query getBusinesses($filter: _BusinessFilter) {
-      Business(filter: $filter, orderBy: avgStars_desc) {
-        name
-        address
-        avgStars
-      }
-    }
-  `;
+		const res = await this.fetch(`blog/${category}.json`);
 
-  export async function preload({ params }) {
-    let category = params.name;
-    return {
-      category: category,
-      cache: await query(client, {
-        query: GET_BUSINESSES
-      }).refetch({
-        filter: {
-          categories_single: {
-            name: category
-          }
-        }
-      })
-    };
-  }
+		if (res.status === 200) {
+			const businesses = await res.json();
+			return { category, businesses };
+		}
+
+		this.error(404, 'Not found');
+	}
 </script>
 
 <script>
   import StarRating from "../../components/StarRating.svelte";
-  import { setClient, restore, query } from "svelte-apollo";
-
-  export let cache;
-  export let category;
-
-  restore(client, GET_BUSINESSES, cache.data);
-  setClient(client);
-
-  const businesses = query(client, { query: GET_BUSINESSES });
+	export let category;
+	export let businesses;
 </script>
 
 <style>
