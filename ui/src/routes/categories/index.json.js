@@ -11,13 +11,12 @@ query getCategories {
 `;
 
 export async function get(req, res, next) {
-    const users = await client.query({
+    const categories = await client.query({
         query: GET_CATEGORIES
     });
-	if (users !== null) {
+	if (categories !== null) {
 		res.setHeader('Content-Type', 'application/json');
-    const json = JSON.stringify(users.data);
-    console.log(json);
+    const json = JSON.stringify(categories.data);
 		res.end(json);
 	} else {
 		next();

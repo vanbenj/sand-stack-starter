@@ -1,16 +1,10 @@
 <script context="module">
 	export async function preload({ params, query }) {
-    console.log("retrieving");
-		const res = await this.fetch(`reviews.txt`);
-    console.log("retrieved");
+		const res = await this.fetch(`reviews.json`);
 
 		if (res.status === 200) {
-      const data = await res.text();
-      console.log(data);
-      const json = (0,eval)(data);
-      console.log(json);
-      const users = { data:{User:[]}};
-			return { users };
+      const users = await res.json();
+      return { users };
 		}
 
 		this.error(500, 'Could not load users');
@@ -35,29 +29,22 @@
 
 <h1>Reviews</h1>
 
-{#await $users}
-  <p>Loading...</p>
-{:then result}
+<ul>
+  {#each users.User as { id, name, reviews }}
+    <li>
+      {name}
+      <ul>
+        {#each reviews as { date, stars, business, text }}
+          <li>
+            <StarRating rating={stars} />
+            {date.formatted}
+            <b>{business.name}</b>
+            <br />
+            <i>{text}</i>
+          </li>
+        {/each}
+      </ul>
+    </li>
+  {/each}
+</ul>
 
-  <ul>
-    {#each result.data.User as { id, name, reviews }}
-      <li>
-        {name}
-        <ul>
-          {#each reviews as { date, stars, business, text }}
-            <li>
-              <StarRating rating={stars} />
-              {date.formatted}
-              <b>{business.name}</b>
-              <br />
-              <i>{text}</i>
-            </li>
-          {/each}
-        </ul>
-      </li>
-    {/each}
-  </ul>
-
-{:catch error}
-  <p>Error: {error}</p>
-{/await}

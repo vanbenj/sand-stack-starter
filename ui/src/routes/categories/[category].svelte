@@ -1,8 +1,8 @@
 <script context="module">
 	export async function preload({ params, query }) {
-    let category = req.params.name;
+    let category = params.category;
 
-		const res = await this.fetch(`blog/${category}.json`);
+		const res = await this.fetch(`categories/${category}.json`);
 
 		if (res.status === 200) {
 			const businesses = await res.json();
@@ -39,20 +39,13 @@
   > {category}
 </h1>
 
-{#await $businesses}
-  <p>Loading...</p>
-{:then result}
+<ul>
+  {#each businesses.Business as { name, address, avgStars }}
+    <li>
+      <StarRating rating={avgStars} />
+      <b>{name}</b>
+      {address}
+    </li>
+  {/each}
+</ul>
 
-  <ul>
-    {#each result.data.Business as { name, address, avgStars }}
-      <li>
-        <StarRating rating={avgStars} />
-        <b>{name}</b>
-        {address}
-      </li>
-    {/each}
-  </ul>
-
-{:catch error}
-  <p>Error: {error}</p>
-{/await}
