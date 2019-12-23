@@ -13,7 +13,7 @@
 
   export async function preload() {
     return {
-      cache: await client.query({
+      categories: await client.query({
         query: GET_CATEGORIES
       })
     };
@@ -21,12 +21,7 @@
 </script>
 
 <script>
-  import { setClient, restore, query } from "svelte-apollo";
-
-  export let cache;
-  restore(client, GET_CATEGORIES, cache.data);
-  setClient(client);
-  const categories = query(client, { query: GET_CATEGORIES });
+  export let categories;
 </script>
 
 <style>
@@ -42,18 +37,11 @@
 
 <h1>Categories</h1>
 
-{#await $categories}
-  <p>Loading...</p>
-{:then result}
-
   <ul>
-    {#each result.data.Category as { name }}
+    {#each categories.data.Category as { name }}
       <li>
         <a rel="prefetch" href="categories/{name}">{name}</a>
       </li>
     {/each}
   </ul>
 
-{:catch error}
-  <p>Error: {error}</p>
-{/await}

@@ -5,15 +5,11 @@ import { HttpLink } from "apollo-link-http";
 
 let GRAPHQL_URI;
 if (typeof location !== "undefined") {
-  // when running on the client use a relative url
-  // since graphql server is proxied
-  GRAPHQL_URI = "/graphql";
+  GRAPHQL_URI = location.protocol + "//" + location.hostname + ":" + location.port + "/graphql";
 } else {
-  // when running during SSR use graphql server directly
-  // this is needed to get Sapper Export working
-  require("dotenv").config();
-  GRAPHQL_URI = process.env.GRAPHQL_URI;
+  GRAPHQL_URI = "/graphql";
 }
+console.log("Init ApolloClient " + GRAPHQL_URI);
 
 const client = new ApolloClient({
   cache: new InMemoryCache(),

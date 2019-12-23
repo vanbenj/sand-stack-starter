@@ -14,33 +14,29 @@
   `;
 
   export async function preload({ params }) {
-    let category = params.name;
-    return {
-      category: category,
-      cache: await query(client, {
-        query: GET_BUSINESSES
-      }).refetch({
+    const category = params.name;
+    const businesses = await client.query({
+      query: GET_BUSINESSES,
+      variables: {
         filter: {
           categories_single: {
             name: category
           }
         }
-      })
+      }
+    });
+    return {
+      category,
+      businesses
     };
   }
 </script>
 
 <script>
   import StarRating from "../../components/StarRating.svelte";
-  import { setClient, restore, query } from "svelte-apollo";
 
-  export let cache;
+  export let businesses;
   export let category;
-
-  restore(client, GET_BUSINESSES, cache.data);
-  setClient(client);
-
-  const businesses = query(client, { query: GET_BUSINESSES });
 </script>
 
 <style>
@@ -63,20 +59,12 @@
   > {category}
 </h1>
 
-{#await $businesses}
-  <p>Loading...</p>
-{:then result}
-
-  <ul>
-    {#each result.data.Business as { name, address, avgStars }}
-      <li>
-        <StarRating rating={avgStars} />
-        <b>{name}</b>
-        {address}
-      </li>
-    {/each}
-  </ul>
-
-{:catch error}
-  <p>Error: {error}</p>
-{/await}
+<ul>
+  {#each businesses.data.Business as { name, address, avgStars }}
+    <li>
+      <StarRating rating={avgStars} />
+      <b>{name}</b>
+      {address}
+    </li>
+  {/each}
+</ul>

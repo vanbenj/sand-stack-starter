@@ -22,22 +22,17 @@
   `;
 
   export async function preload() {
-    return {
-      cache: await client.query({
-        query: GET_USERS
-      })
-    };
+    const users = await client.query({
+      query: GET_USERS
+    });
+    return { users };
   }
 </script>
 
 <script>
   import StarRating from "../components/StarRating.svelte";
-  import { setClient, restore, query } from "svelte-apollo";
 
-  export let cache;
-  restore(client, GET_USERS, cache.data);
-  setClient(client);
-  const users = query(client, { query: GET_USERS });
+  export let users;
 </script>
 
 <style>
@@ -53,12 +48,8 @@
 
 <h1>Reviews</h1>
 
-{#await $users}
-  <p>Loading...</p>
-{:then result}
-
   <ul>
-    {#each result.data.User as { id, name, reviews }}
+    {#each users.data.User as { id, name, reviews }}
       <li>
         {name}
         <ul>
@@ -76,6 +67,3 @@
     {/each}
   </ul>
 
-{:catch error}
-  <p>Error: {error}</p>
-{/await}
