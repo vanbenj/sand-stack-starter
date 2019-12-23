@@ -6,9 +6,9 @@ This project used as a starting point the api component from the [GRANDstack](ht
 
 The ui app preloads the data for each page using [Sapper preloading](https://sapper.svelte.dev/docs#Preloading) and [Sapper server routes](https://sapper.svelte.dev/docs#Server_routes). The Graphql server is called internally by the server routes and does not need to be exposed to the client.
 
-The branch [browser-apollo-client](https://github.com/vanbenj/sand-stack-starter/tree/browser-apollo-client) shows an alternate approach that does not use server routes but instead preloads the data in the `.svelte` pages directly from the GraphQL sever via a proxy defined in `server.js`.
+The [branch browser-apollo-client](https://github.com/vanbenj/sand-stack-starter/tree/browser-apollo-client) shows an alternate approach that does not use server routes but instead preloads the data in the `.svelte` pages directly from the GraphQL sever via a proxy defined in `server.js`.
 
-The branch [svelte-apollo](https://github.com/vanbenj/sand-stack-starter/tree/browser-apollo-client) is similar to the [browser-apollo-client](https://github.com/vanbenj/sand-stack-starter/tree/browser-apollo-client) branch but also makes use of [svelte-apollo](https://github.com/timhall/svelte-apollo)
+The [branch svelte-apollo](https://github.com/vanbenj/sand-stack-starter/tree/browser-apollo-client) is similar to the [branch browser-apollo-client](https://github.com/vanbenj/sand-stack-starter/tree/browser-apollo-client) but also makes use of [svelte-apollo](https://github.com/timhall/svelte-apollo)
 
 If you are new to Svelete this is a good [introductory video](https://youtu.be/AdNJ3fydeao)
 
