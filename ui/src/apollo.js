@@ -5,6 +5,9 @@ import { HttpLink } from "apollo-link-http";
 
 let GRAPHQL_URI;
 if (typeof location !== "undefined") {
+  // hack to prevent ApolloError
+  // Network error: Only absolute URLs are supported
+  // in browser when reloading pages 
   GRAPHQL_URI = location.protocol + "//" + location.hostname + ":" + location.port + "/graphql";
 } else {
   GRAPHQL_URI = "/graphql";
