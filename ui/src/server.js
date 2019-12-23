@@ -7,7 +7,7 @@ import dotenv from "dotenv";
 
 dotenv.config();
 
-const GRAPHQL_URI = process.env.GRAPHQL_URI || "http://localhost:4001/graphql";
+const GRAPHQL_URI = process.env.GRAPHQL_URI;
 const apiProxy = proxy(GRAPHQL_URI);
 
 const { PORT, NODE_ENV } = process.env;
