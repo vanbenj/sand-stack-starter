@@ -1,22 +1,22 @@
 <script context="module">
-	export async function preload({ params, query }) {
+  export async function preload({ params, query }) {
     let category = params.category;
 
-		const res = await this.fetch(`categories/${category}.json`);
+    const res = await this.fetch(`categories/${category}.json`);
 
-		if (res.status === 200) {
-			const businesses = await res.json();
-			return { category, businesses };
-		}
+    if (res.status === 200) {
+      const businesses = await res.json();
+      return { category, businesses };
+    }
 
-		this.error(404, 'Not found');
-	}
+    this.error(404, "Not found");
+  }
 </script>
 
 <script>
   import StarRating from "../../components/StarRating.svelte";
-	export let category;
-	export let businesses;
+  export let category;
+  export let businesses;
 </script>
 
 <style>
@@ -48,4 +48,3 @@
     </li>
   {/each}
 </ul>
-

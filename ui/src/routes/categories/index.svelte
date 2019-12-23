@@ -1,17 +1,17 @@
 <script context="module">
-	export async function preload({ params, query }) {
-		const res = await this.fetch(`categories.json`);
-		if (res.status === 200) {
+  export async function preload({ params, query }) {
+    const res = await this.fetch(`categories.json`);
+    if (res.status === 200) {
       const categories = await res.json();
       return { categories };
-		}
+    }
 
-		this.error(500, 'Could not load users');
-	}
+    this.error(500, "Could not load users");
+  }
 </script>
 
 <script>
-	export let categories;
+  export let categories;
 </script>
 
 <style>
@@ -34,4 +34,3 @@
     </li>
   {/each}
 </ul>
-

@@ -1,19 +1,19 @@
 <script context="module">
-	export async function preload({ params, query }) {
-		const res = await this.fetch(`reviews.json`);
+  export async function preload({ params, query }) {
+    const res = await this.fetch(`reviews.json`);
 
-		if (res.status === 200) {
+    if (res.status === 200) {
       const users = await res.json();
       return { users };
-		}
+    }
 
-		this.error(500, 'Could not load users');
-	}
+    this.error(500, "Could not load users");
+  }
 </script>
 
 <script>
   import StarRating from "../../components/StarRating.svelte";
-	export let users;
+  export let users;
 </script>
 
 <style>
@@ -47,4 +47,3 @@
     </li>
   {/each}
 </ul>
-
