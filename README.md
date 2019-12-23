@@ -10,7 +10,7 @@ The [branch browser-apollo-client](https://github.com/vanbenj/sand-stack-starter
 
 The [branch svelte-apollo](https://github.com/vanbenj/sand-stack-starter/tree/browser-apollo-client) is similar to the [branch browser-apollo-client](https://github.com/vanbenj/sand-stack-starter/tree/browser-apollo-client) but also makes use of [svelte-apollo](https://github.com/timhall/svelte-apollo)
 
-If you are new to Svelete this is a good [introductory video](https://youtu.be/AdNJ3fydeao)
+If you are new to Svelte this is a good [introductory video](https://youtu.be/AdNJ3fydeao)
 
 The GRANDStack documentation provides a good overview of the [Neo4j GraphQL](https://grandstack.io/docs/neo4j-graphql-overview.html) integration.
 
