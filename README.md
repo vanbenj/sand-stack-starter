@@ -2,7 +2,9 @@
 
 This project is a starter for building a SANDstack ([Sveltejs](https://svelte.dev/)/[Sapper](https://sapper.svelte.dev/), [Apollo GraphQL](https://www.apollographql.com/), [Neo4j Database](https://neo4j.com/neo4j-graph-database/)) application. There are two components to the starter, the UI application (a Svelte/Sapper app) and the API app (GraphQL server).
 
-This project used as a starting point the api component from the [GRANDstack](https://grandstack.io) project and the ui component from [rococosans sapper-svelte-apollo-demo](https://github.com/rococosans/sapper-svelte-apollo-demo) project (which is basically just the default [Sapper template](https://github.com/sveltejs/sapper-template) with the [Svelte Apollo Integration](https://github.com/timhall/svelte-apollo) added in).
+This project used as a starting point the api component from the [GRANDstack](https://grandstack.io) project and the ui component from [rococosans sapper-svelte-apollo-demo](https://github.com/rococosans/sapper-svelte-apollo-demo) project (which is basically just the default [Sapper template](https://github.com/sveltejs/sapper-template).
+
+This branch uses [Svelte Apollo](https://github.com/timhall/svelte-apollo) to load data in the `.svelte` files.
 
 If you are new to Svelete this is a good [introductory video](https://youtu.be/AdNJ3fydeao)
 
