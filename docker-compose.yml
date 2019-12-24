@@ -34,8 +34,7 @@ services:
     ports:
       - 3000:3000
     environment:
-      - REACT_APP_GRAPHQL_URI=/graphql
-      - PROXY=http://api:4001/graphql
+      - GRAPHQL_URI=http://api:4001/graphql
     links:
     - api
     depends_on:
