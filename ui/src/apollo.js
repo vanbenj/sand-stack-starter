@@ -7,10 +7,17 @@ let GRAPHQL_URI;
 if (typeof location !== "undefined") {
   // hack to prevent ApolloError
   // Network error: Only absolute URLs are supported
-  // in browser when reloading pages 
-  GRAPHQL_URI = location.protocol + "//" + location.hostname + ":" + location.port + "/graphql";
+  // in browser when reloading pages
+  GRAPHQL_URI =
+    location.protocol +
+    "//" +
+    location.hostname +
+    ":" +
+    location.port +
+    "/graphql";
 } else {
-  GRAPHQL_URI = "/graphql";
+  require("dotenv").config();
+  GRAPHQL_URI = process.env.GRAPHQL_URI;
 }
 console.log("Init ApolloClient " + GRAPHQL_URI);
 
@@ -18,8 +25,8 @@ const client = new ApolloClient({
   cache: new InMemoryCache(),
   link: new HttpLink({
     uri: GRAPHQL_URI,
-    fetch
-  })
+    fetch,
+  }),
 });
 
 export default client;

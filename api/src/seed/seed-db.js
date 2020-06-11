@@ -17,5 +17,5 @@ client
   .mutate({
     mutation: gql(seedmutations)
   })
-  .then(data => console.log(data))
-  .catch(error => console.error(error));
+  .then((data) => console.log(data))
+  .catch((error) => console.error(error));
