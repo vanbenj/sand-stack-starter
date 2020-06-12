@@ -4,7 +4,7 @@ This project is a starter for building a SANDstack ([Sveltejs](https://svelte.de
 
 This project used as a starting point the api component from the [GRANDstack](https://grandstack.io) project and the default [Sapper template](https://github.com/sveltejs/sapper-template).
 
-The master branch **DOES NOT USE** [Svelte Apollo](https://github.com/timhall/svelte-apollo) There is a separate branch the demonstrates it's use but it is not needed for most use cases.
+The master branch **DOES NOT USE** [Svelte Apollo](https://github.com/timhall/svelte-apollo) There is a separate branch that demonstrates it's use.
 
 If you are new to Svelete this is a good [introductory video](https://youtu.be/AdNJ3fydeao)
 
@@ -37,7 +37,9 @@ CONTAINER ID        IMAGE                      COMMAND                  CREATED 
 8ae79170f66e        sand-stack-starter_neo4j   "/sbin/tini -g -- /d…"   3 minutes ago       Up 3 minutes        0.0.0.0:7474->7474/tcp, 7473/tcp, 0.0.0.0:7687->7687/tcp   sand-stack-starter_neo4j_1
 ```
 
-Initially the database is empty. Run the test suite automatically loads the database with sample data.
+Initially the database is empty. Running the test suite automatically loads the database with sample data.
+
+Open a new terminal
 
 ```
 cd test
@@ -134,6 +136,10 @@ The test runner lets you select the browser you wish to use for testing.
 
 We've found as as apps get larger and more complex it is often necessay to add [cy.wait(time)](https://docs.cypress.io/api/commands/wait.html#Syntax) to make the test stable on slower CI machines. These are end to end tests so many factors can affect test performance.
 
+### Github Continuous Integration
+
+The `/.github/workflows/test.yml` is a Github action that runs the Cypress end to end tests and stores the test results to github on every push.
+
 ### Sapper Export
 
 This simple example is a readonly app and a candidate for [Sapper Export](https://sapper.svelte.dev/docs#Exporting)
@@ -165,7 +171,3 @@ SAPPER_APP_GRAPHQL_URI=http://localhost:4001/graphql
 ```
 
 However in production they are often different as the `SAPPER_APP_GRAPHQL_URI` is the public address of the api server and `SSR_GRAPHQL_URI` is the internal address of the server. An example of this can be seen in `docker-compose-stage.yml`.
-
-### Github Continuous Integration
-
-The `/.github/workflows/test.yml` is a Github action that runs the Cypress end to end tests and stores the test results to github on every push.
