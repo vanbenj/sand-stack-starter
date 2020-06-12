@@ -1,21 +1,12 @@
 version: "3"
 
 services:
-  neo4j:
-    build: ./neo4j
-    ports:
-      - 7474:7474
-      - 7687:7687
-    environment:
-      - NEO4J_dbms_security_procedures_unrestricted=apoc.*
-      - NEO4J_apoc_import_file_enabled=true
-      - NEO4J_apoc_export_file_enabled=true
   api:
     build: ./api
     ports:
       - 4001:4001
     environment:
-      - NODE_ENV=production
+      - NODE_ENV=staging
       - GRAPHQL_LISTEN_PORT=4001
       - GRAPHQL_URI=http://api:4001/graphql
       - NEO4J_URI=bolt://neo4j:7687
@@ -30,11 +21,11 @@ services:
       context: ./ui
       args:
         - SAPPER_APP_GRAPHQL_URI=http://localhost:4001/graphql
-        - NODE_ENV=production
+        - NODE_ENV=staging
     ports:
       - 3000:3000
     environment:
-      - NODE_ENV=production
+      - NODE_ENV=staging
       - SSR_GRAPHQL_URI=http://api:4001/graphql
     links:
       - api

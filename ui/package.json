@@ -3,8 +3,8 @@
   "version": "0.0.1",
   "description": "UI app for SANDstack",
   "scripts": {
-    "dev": "sapper dev",
-    "build": "sapper build --legacy",
+    "dev": "export SAPPER_APP_TIMESTAMP=$(date +%s%3N) && sapper dev",
+    "build": "export SAPPER_APP_TIMESTAMP=$(date +%s%3N) && sapper build --legacy",
     "export": "sapper export --legacy --concurrent=1 --timeout=60000",
     "start": "node __sapper__/build",
     "cy:run": "cypress run",

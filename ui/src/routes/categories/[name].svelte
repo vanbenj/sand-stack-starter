@@ -60,11 +60,11 @@
 </h1>
 
 <ul>
-  {#each businesses.data.Business as { name, address, avgStars }}
+  {#each businesses.data.Business as business}
     <li>
-      <StarRating rating={avgStars} />
-      <b>{name}</b>
-      {address}
+      <StarRating rating={business.avgStars} />
+      <b>{business.name}</b>
+      {business.address}
     </li>
   {/each}
 </ul>

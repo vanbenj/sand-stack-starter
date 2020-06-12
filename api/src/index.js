@@ -7,6 +7,7 @@ import dotenv from "dotenv";
 
 // set environment variables from ../.env
 dotenv.config();
+const dev = process.env.NODE_ENV === "development";
 
 const app = express();
 
@@ -41,8 +42,8 @@ const driver = neo4j.driver(
 const server = new ApolloServer({
   context: { driver },
   schema: schema,
-  introspection: true,
-  playground: true
+  introspection: dev,
+  playground: dev
 });
 
 // Specify port and path for GraphQL endpoint

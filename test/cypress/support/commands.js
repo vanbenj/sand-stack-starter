@@ -51,7 +51,7 @@ Cypress.Commands.add("seedDb", () => {
     YIELD row, result
     RETURN row, result;
     `;
-    console.log(LOAD_SEED_DB);
+    console.log("Resetting database");
     (async () => {
       const driver = neo4j.driver(
         Cypress.env("NEO4J_URI"),
