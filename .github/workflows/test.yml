@@ -1,0 +1,45 @@
+name: Cypress Tests
+
+on: [push]
+
+jobs:
+  build:
+    runs-on: ubuntu-16.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v2
+      - name: Neo4j server
+        run: docker-compose up -d --build
+      - name: API server
+        uses: actions/setup-node@v1
+        with:
+          node-version: "12.x"
+      - run: |
+          npm ci
+          npm run build
+          npm run start &
+        working-directory: api
+      - name: UI server
+        uses: actions/setup-node@v1
+        with:
+          node-version: "12.x"
+      - run: |
+          npm ci
+          npm run build
+          npm run start &
+        working-directory: ui
+      - name: Cypress run
+        uses: cypress-io/github-action@v1
+        with:
+          browser: electron
+          wait-on: http://localhost:7474
+          # record: true
+          working-directory: test
+          # group: "Default tests"
+        # env:
+        #   CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
+      - uses: actions/upload-artifact@v1
+        if: failure()
+        with:
+          name: cypress-videos
+          path: test/cypress/videos

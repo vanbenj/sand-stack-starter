@@ -155,7 +155,7 @@ npx serve __sapper__/export
 
 ### Sapper Environment
 
-The `ui` app makes use of the [Sapper Environment npm](https://www.npmjs.com/package/sapper-environment). These are environment variables that are replaced at build time so they can be used in client code. Any environment variable with prefix `SAPPER_APP_` is for use in the client code.
+The `ui` app makes use of the [Sapper Environment npm](https://www.npmjs.com/package/sapper-environment). These are environment variables that are replaced at build time by `rollup.config.js` so they can be used in client code. Any environment variable with prefix `SAPPER_APP_` is for use in the client code.
 
 We make especial use of this in `/ui/src/apollo.js`. The Apollo GraphQl client is used in both the browser and SSR. In dev mode they have the same value.
 
@@ -165,3 +165,7 @@ SAPPER_APP_GRAPHQL_URI=http://localhost:4001/graphql
 ```
 
 However in production they are often different as the `SAPPER_APP_GRAPHQL_URI` is the public address of the api server and `SSR_GRAPHQL_URI` is the internal address of the server. An example of this can be seen in `docker-compose-stage.yml`.
+
+### Github Continuous Integration
+
+The `/.github/workflows/test.yml` is a Github action that runs the Cypress end to end tests and stores the test results to github on every push.
