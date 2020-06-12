@@ -24,7 +24,7 @@ describe("Sapper template app", () => {
 
   it("load /reviews by ssr", () => {
     cy.visit("/reviews");
-    cy.wait(500);
+    cy.wait(1000);
     cy.url().should("include", "/reviews");
     cy.get("ul#users").children().should("have.length", 4);
   });
