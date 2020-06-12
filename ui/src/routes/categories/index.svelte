@@ -37,11 +37,10 @@
 
 <h1>Categories</h1>
 
-  <ul>
-    {#each categories.data.Category as { name }}
-      <li>
-        <a rel="prefetch" href="categories/{name}">{name}</a>
-      </li>
-    {/each}
-  </ul>
-
+<ul id="categories">
+  {#each categories.data.Category as category (category.name)}
+    <li>
+      <a rel="prefetch" href="categories/{category.name}">{category.name}</a>
+    </li>
+  {/each}
+</ul>

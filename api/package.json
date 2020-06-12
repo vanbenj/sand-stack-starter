@@ -7,8 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "./node_modules/.bin/nodemon --watch src --ext js,graphql --exec babel-node  src/index.js",
     "build": "npx babel src -d build; cp .env build; cp src/schema.graphql build",
-    "start": "npm run build && node build/index.js",
-    "seedDb": "npm run build && node build/seed/seed-db.js"
+    "start": "npm run build && node build/index.js"
   },
   "license": "MIT",
   "dependencies": {

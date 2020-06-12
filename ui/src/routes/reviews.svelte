@@ -6,8 +6,10 @@
   const GET_USERS = gql`
     query getUsers {
       User {
+        id
         name
         reviews(orderBy: stars_desc) {
+          id
           date {
             formatted
           }
@@ -48,22 +50,21 @@
 
 <h1>Reviews</h1>
 
-  <ul>
-    {#each users.data.User as { id, name, reviews }}
-      <li>
-        {name}
-        <ul>
-          {#each reviews as { date, stars, business, text }}
-            <li>
-              <StarRating rating={stars} />
-              {date.formatted}
-              <b>{business.name}</b>
-              <br />
-              <i>{text}</i>
-            </li>
-          {/each}
-        </ul>
-      </li>
-    {/each}
-  </ul>
-
+<ul id="users">
+  {#each users.data.User as user (user.id)}
+    <li>
+      {user.name}
+      <ul>
+        {#each user.reviews as review (review.id)}
+          <li>
+            <StarRating rating={review.stars} />
+            {review.date.formatted}
+            <b>{review.business.name}</b>
+            <br />
+            <i>{review.text}</i>
+          </li>
+        {/each}
+      </ul>
+    </li>
+  {/each}
+</ul>

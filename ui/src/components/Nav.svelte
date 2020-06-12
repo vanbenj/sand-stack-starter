@@ -51,16 +51,19 @@
 <nav>
   <ul>
     <li>
-      <a class={segment === undefined ? 'selected' : ''} href=".">home</a>
+      <a id="home" class={segment === undefined ? 'selected' : ''} href=".">
+        home
+      </a>
     </li>
     <li>
-      <a class:selected={segment === 'about'} href="about">about</a>
+      <a id="about" class:selected={segment === 'about'} href="about">about</a>
     </li>
 
     <!-- for the users link, we're using rel=prefetch so that Sapper prefetches
 		     the users data when we hover over the link or tap it on a touchscreen -->
     <li>
       <a
+        id="reviews"
         rel="prefetch"
         class={segment === 'reviews' ? 'selected' : ''}
         href="reviews">
@@ -72,6 +75,7 @@
 		     the categories data when we hover over the link or tap it on a touchscreen -->
     <li>
       <a
+        id="categories"
         rel="prefetch"
         class={segment === 'categories' ? 'selected' : ''}
         href="categories">

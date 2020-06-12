@@ -1,0 +1,31 @@
+// this script was generated using https://neo4j.com/docs/labs/apoc/current/export/cypher/#export-cypher-neo4j-browser
+// with some manual cleanup required to escape single quotes
+CALL apoc.cypher.runMany('
+CREATE CONSTRAINT ON (node:`UNIQUE IMPORT LABEL`) ASSERT (node.`UNIQUE IMPORT ID`) IS UNIQUE;
+UNWIND [{_id:0, properties:{name:"Will", id:"u1"}}, {_id:1, properties:{name:"Bob", id:"u2"}}, {_id:2, properties:{name:"Jenny", id:"u3"}}, {_id:3, properties:{name:"Angie", id:"u4"}}] AS row
+CREATE (n:`UNIQUE IMPORT LABEL`{`UNIQUE IMPORT ID`: row._id}) SET n += row.properties SET n:User;
+UNWIND [{_id:21, properties:{name:"Coffee"}}, {_id:22, properties:{name:"Library"}}, {_id:23, properties:{name:"Beer"}}, {_id:24, properties:{name:"Restaurant"}}, {_id:25, properties:{name:"Ramen"}}, {_id:26, properties:{name:"Cafe"}}, {_id:27, properties:{name:"Deli"}}, {_id:28, properties:{name:"Breakfast"}}, {_id:29, properties:{name:"Brewery"}}] AS row
+CREATE (n:`UNIQUE IMPORT LABEL`{`UNIQUE IMPORT ID`: row._id}) SET n += row.properties SET n:Category;
+UNWIND [{_id:30, properties:{date:date("2016-01-03"), text:"Great IPA selection!", id:"r1", stars:4}}, {_id:31, properties:{date:date("2016-07-14"), text:"I love everything", id:"r2", stars:5}}, {_id:32, properties:{date:date("2018-09-10"), text:"It\'s lacking something", id:"r3", stars:3}}, {_id:33, properties:{date:date("2017-11-13"), text:"Love it more", id:"r4", stars:5}}, {_id:34, properties:{date:date("2018-01-03"), text:"Best breakfast sandwich at the Farmer\'s Market. Always get the works.", id:"r5", stars:4}}, {_id:35, properties:{date:date("2018-03-24"), text:"Uses mostly organic food, vegan friendly", id:"r6", stars:4}}, {_id:36, properties:{date:date("2015-08-29"), text:"Not a great selection of books, but fortunately the inter-library loan system is good. Wifi is quite slow.", id:"r7", stars:3}}, {_id:37, properties:{date:date("2018-08-11"), text:"Zebra pale ale is nice", id:"r8", stars:5}}, {_id:38, properties:{date:date("2016-11-21"), text:"Love it!!", id:"r9", stars:5}}, {_id:39, properties:{date:date("2015-12-15"), text:"Somewhat lacking in imagination", id:"r10", stars:2}}] AS row
+CREATE (n:`UNIQUE IMPORT LABEL`{`UNIQUE IMPORT ID`: row._id}) SET n += row.properties SET n:Review;
+UNWIND [{_id:4, properties:{address:"313 N 1st St W", city:"Missoula", name:"KettleHouse Brewing Co.", state:"MT", id:"b1"}}, {_id:5, properties:{address:"1151 W Broadway St", city:"Missoula", name:"Imagine Nation Brewing", state:"MT", id:"b2"}}, {_id:6, properties:{address:"Food Truck - Farmers Market", city:"Missoula", name:"Ninja Mike\'s", id:"b3", state:"MT"}}, {_id:7, properties:{address:"201 E Front St", city:"Missoula", name:"Market on Front", state:"MT", id:"b4"}}, {_id:8, properties:{address:"301 E Main St", city:"Missoula", name:"Missoula Public Library", state:"MT", id:"b5"}}, {_id:9, properties:{address:"121 W Broadway St", city:"Missoula", name:"Zootown Brew", id:"b6", state:"MT"}}, {_id:10, properties:{address:"723 California Dr", city:"Burlingame", name:"Hanabi", id:"b7", state:"CA"}}, {_id:11, properties:{address:"113 B St", city:"San Mateo", name:"Philz Coffee", id:"b8", state:"CA"}}, {_id:12, properties:{address:"121 Industrial Rd #11", city:"Belmont", name:"Alpha Acid Brewing Company", id:"b9", state:"CA"}}, {_id:20, properties:{address:"55 W 3rd Ave", city:"San Mateo", name:"San Mateo Public Library Central Library", state:"CA", id:"b10"}}] AS row
+CREATE (n:`UNIQUE IMPORT LABEL`{`UNIQUE IMPORT ID`: row._id}) SET n += row.properties SET n:Business;
+UNWIND [{start: {_id:0}, end: {_id:30}, properties:{}}, {start: {_id:2}, end: {_id:31}, properties:{}}, {start: {_id:3}, end: {_id:32}, properties:{}}, {start: {_id:2}, end: {_id:33}, properties:{}}, {start: {_id:0}, end: {_id:34}, properties:{}}, {start: {_id:1}, end: {_id:35}, properties:{}}, {start: {_id:0}, end: {_id:36}, properties:{}}, {start: {_id:3}, end: {_id:37}, properties:{}}, {start: {_id:2}, end: {_id:38}, properties:{}}, {start: {_id:1}, end: {_id:39}, properties:{}}] AS row
+MATCH (start:`UNIQUE IMPORT LABEL`{`UNIQUE IMPORT ID`: row.start._id})
+MATCH (end:`UNIQUE IMPORT LABEL`{`UNIQUE IMPORT ID`: row.end._id})
+CREATE (start)-[r:WROTE]->(end) SET r += row.properties;
+UNWIND [{start: {_id:4}, end: {_id:29}, properties:{}}, {start: {_id:5}, end: {_id:23}, properties:{}}, {start: {_id:5}, end: {_id:29}, properties:{}}, {start: {_id:6}, end: {_id:24}, properties:{}}, {start: {_id:6}, end: {_id:28}, properties:{}}, {start: {_id:7}, end: {_id:21}, properties:{}}, {start: {_id:7}, end: {_id:24}, properties:{}}, {start: {_id:7}, end: {_id:26}, properties:{}}, {start: {_id:7}, end: {_id:27}, properties:{}}, {start: {_id:7}, end: {_id:28}, properties:{}}, {start: {_id:8}, end: {_id:22}, properties:{}}, {start: {_id:9}, end: {_id:21}, properties:{}}, {start: {_id:10}, end: {_id:24}, properties:{}}, {start: {_id:10}, end: {_id:25}, properties:{}}, {start: {_id:11}, end: {_id:21}, properties:{}}, {start: {_id:11}, end: {_id:28}, properties:{}}, {start: {_id:12}, end: {_id:29}, properties:{}}, {start: {_id:20}, end: {_id:22}, properties:{}}, {start: {_id:4}, end: {_id:23}, properties:{}}] AS row
+MATCH (start:`UNIQUE IMPORT LABEL`{`UNIQUE IMPORT ID`: row.start._id})
+MATCH (end:`UNIQUE IMPORT LABEL`{`UNIQUE IMPORT ID`: row.end._id})
+CREATE (start)-[r:IN_CATEGORY]->(end) SET r += row.properties;
+UNWIND [{start: {_id:30}, end: {_id:4}, properties:{}}, {start: {_id:31}, end: {_id:4}, properties:{}}, {start: {_id:32}, end: {_id:5}, properties:{}}, {start: {_id:33}, end: {_id:6}, properties:{}}, {start: {_id:34}, end: {_id:6}, properties:{}}, {start: {_id:35}, end: {_id:7}, properties:{}}, {start: {_id:36}, end: {_id:8}, properties:{}}, {start: {_id:37}, end: {_id:9}, properties:{}}, {start: {_id:38}, end: {_id:10}, properties:{}}, {start: {_id:39}, end: {_id:5}, properties:{}}] AS row
+MATCH (start:`UNIQUE IMPORT LABEL`{`UNIQUE IMPORT ID`: row.start._id})
+MATCH (end:`UNIQUE IMPORT LABEL`{`UNIQUE IMPORT ID`: row.end._id})
+CREATE (start)-[r:REVIEWS]->(end) SET r += row.properties;
+MATCH (n:`UNIQUE IMPORT LABEL`)  WITH n LIMIT 20000 REMOVE n:`UNIQUE IMPORT LABEL` REMOVE n.`UNIQUE IMPORT ID`;
+DROP CONSTRAINT ON (node:`UNIQUE IMPORT LABEL`) ASSERT (node.`UNIQUE IMPORT ID`) IS UNIQUE;
+',
+  {})
+YIELD row, result
+RETURN row, result;
+

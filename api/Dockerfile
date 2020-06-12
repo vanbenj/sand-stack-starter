@@ -1,11 +1,13 @@
-FROM node:12
+FROM node:12-alpine
 
 RUN mkdir -p /app
 WORKDIR /app
 
 COPY package.json .
+COPY package-lock.json .
 RUN npm install
-COPY . .
+COPY src ./src
+COPY .env .
 
 EXPOSE 4001
 
