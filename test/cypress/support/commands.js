@@ -40,6 +40,18 @@ Cypress.Commands.add(
 
 Cypress.Commands.add("seedDb", () => {
   cy.fixture("seedDb.cypher").then((seedDb) => {
+    const DELETE_ALL = "MATCH (n) DETACH DELETE n";
+
+    const escapedSeedDb = seedDb.replace(/'/g, "\\'");
+    const LOAD_SEED_DB = `
+    CALL apoc.cypher.runMany('
+    ${escapedSeedDb}
+    ',
+    {})
+    YIELD row, result
+    RETURN row, result;
+    `;
+    console.log(LOAD_SEED_DB);
     (async () => {
       const driver = neo4j.driver(
         Cypress.env("NEO4J_URI"),
@@ -50,8 +62,8 @@ Cypress.Commands.add("seedDb", () => {
       );
       const session = driver.session();
       try {
-        await session.run("MATCH (n) DETACH DELETE n");
-        await session.run(seedDb);
+        await session.run(DELETE_ALL);
+        await session.run(LOAD_SEED_DB);
       } finally {
         await session.close();
         await driver.close();
